@@ -18,7 +18,7 @@ This repository/folder contains a suite of Python and Bash scripts designed to a
 
 4. **`rerun_failed.py`**
    * **Purpose:** Prepares incomplete/timed-out runs for a retry with adjusted parameters.
-   * **How it works:** Identifies runs lacking the standard termination code, duplicates the run folder (appending `_retry`), and automatically applies inlist fixes (e.g., adjusting `opacity_max` constraints) to help the model push past numerical difficulties. 
+   * **How it works:** Identifies runs lacking the standard termination code, duplicates the run folder (appending `_retry`), and automatically applies inlist fixes (e.g., adjusting `opacity_max` constraints) to help the model push past numerical difficulties.
 
 ## Prerequisites
 
@@ -54,6 +54,18 @@ To automatically prepare retries for timed-out runs, use the rerun script. Ensur
 python3 rerun_failed.py
 ```
 *This outputs a `timeout_runs.txt` summary and generates `*_retry` folders ready for a new job submission.*
+
+### Architecture Flow
+
+```mermaid
+graph TD;
+    A[create_grid.py] -->|Generates N Directories| B(joblist.txt);
+    B --> C[slurm_job_array_grid_submit.sh];
+    C -->|Executes on HPC| D{MESA Runs};
+    D -->|Success| E[Output Data];
+    D -->|Timeout/Error| F[check_failed.py];
+    F -->|Identifies Errors| G[rerun_failed.py];
+    G -->|Applies Fixes & Restarts| C;
 
 ## Customization Notes
 * **Termination Codes:** By default, the checking scripts look for "termination code" in `log.txt`. If your MESA setup outputs a different success string, update the `keywords` and `expected_end` variables in `check_failed.py` and `rerun_failed.py`.
