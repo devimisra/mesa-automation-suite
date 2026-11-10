@@ -79,6 +79,7 @@ The automation and orchestration tools in this repository were developed to mana
 These scripts directly facilitated the modeling, simulation scaling, and analysis published in the following peer-reviewed *Astronomy & Astrophysics* (A&A) papers:
 
 * **Misra, D.**, Koljonen, K. I. I., & Linares, M. (2025). *"The slowest spinning Galactic-field spider PSRJ1932+2121: A history of inefficient mass transfer."* Monthly Notices of the Royal Astronomical Society, 541, L58.
+    *   [Read on NASA ADS](https://ui.adsabs.harvard.edu/abs/2025MNRAS.541L..58M/abstract)
 *   **Misra, D.**, Linares, M., & Ye, C. S. (2025). *"Investigating cannibalistic millisecond pulsar binaries using MESA: New constraints from pulsar spin and mass evolution."* Astronomy & Astrophysics, 693, A314.
     *   [Read on NASA ADS](https://ui.adsabs.harvard.edu/abs/2025A%26A...693A.314M/abstract)
 *   **Misra, D.**, Fragos, T., Tauris, T. M., Zapartas, E., & Aguilera-Dena, D. R. (2020). *"The origin of pulsating ultra-luminous X-ray sources: Low- and intermediate-mass X-ray binaries containing neutron star accretors."* Astronomy & Astrophysics, 642, A174.
