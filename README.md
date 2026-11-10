@@ -58,3 +58,17 @@ python3 rerun_failed.py
 ## Customization Notes
 * **Termination Codes:** By default, the checking scripts look for "termination code" in `log.txt`. If your MESA setup outputs a different success string, update the `keywords` and `expected_end` variables in `check_failed.py` and `rerun_failed.py`.
 * **Fixes:** The `rerun_failed.py` script currently includes a placeholder fix (`reduce_opacity_max`). You should expand the `apply_fix` function to match the standard troubleshooting steps for your specific stellar models.
+
+## Research Impact & Publications
+
+The automation and orchestration tools in this repository were developed to manage the high-throughput MESA stellar evolution grids required for large-scale astrophysical population synthesis. 
+
+These scripts directly facilitated the modeling, simulation scaling, and analysis published in the following peer-reviewed *Astronomy & Astrophysics* (A&A) papers:
+
+*   **Misra, D.**, Linares, M., & Ye, C. S. (2025). *"Investigating cannibalistic millisecond pulsar binaries using MESA: New constraints from pulsar spin and mass evolution."* Astronomy & Astrophysics, 693, A314.
+    *   [Read on NASA ADS](https://ui.adsabs.harvard.edu/abs/2025A%26A...693A.314M/abstract)
+*   **Misra, D.**, Fragos, T., Tauris, T. M., Zapartas, E., & Aguilera-Dena, D. R. (2020). *"The origin of pulsating ultra-luminous X-ray sources: Low- and intermediate-mass X-ray binaries containing neutron star accretors."* Astronomy & Astrophysics, 642, A174.
+    *   [Read on NASA ADS](https://ui.adsabs.harvard.edu/abs/2020A%26A...642A.174M/abstract)
+
+### Scientific Use Case 
+In computational astrophysics, evaluating theoretical boundaries against observational data requires iterating over massive, multi-dimensional parameter spaces. By automating parameter grid generation (`create_grid.py`), executing parallel HPC arrays via SLURM (`slurm_job_array_grid_submit.sh`), and implementing fault-tolerant log scraping for timed-out or failed runs (`check_failed.py`, `rerun_failed.py`), this pipeline provided the necessary infrastructure to scale these simulations. This systematic approach ensured reproducible, robust generation of the evolutionary tracks and population statistics presented in the research above.
