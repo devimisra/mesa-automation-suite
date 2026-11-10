@@ -58,16 +58,17 @@ python3 rerun_failed.py
 ### Architecture Flow
 
 ```mermaid
-graph TD
-    A[create_grid.py] -->|Generates N Directories| B(joblist.txt)
-    B --> C[slurm_job_array_grid_submit.sh]
-    C -->|Executes on HPC| D{MESA Runs}
-    D -->|Success| E[Output Data]
-    D -->|Timeout/Error| F[check_failed.py]
-    F -->|Identifies Errors| G[rerun_failed.py]
-    G -->|Applies Fixes & Restarts| C
+graph TD;
+    A[create_grid.py] -->|Generates N Directories| B(joblist.txt);
+    B --> C[slurm_job_array_grid_submit.sh];
+    C -->|Executes on HPC| D{MESA Runs};
+    D -->|Success| E[Output Data];
+    D -->|Timeout/Error| F[check_failed.py];
+    F -->|Identifies Errors| G[rerun_failed.py];
+    G -->|Applies Fixes & Restarts| C;
+```
 
-### Customization Notes
+## Customization Notes
 * **Termination Codes:** By default, the checking scripts look for "termination code" in `log.txt`. If your MESA setup outputs a different success string, update the `keywords` and `expected_end` variables in `check_failed.py` and `rerun_failed.py`.
 * **Fixes:** The `rerun_failed.py` script currently includes a placeholder fix (`reduce_opacity_max`). You should expand the `apply_fix` function to match the standard troubleshooting steps for your specific stellar models.
 
